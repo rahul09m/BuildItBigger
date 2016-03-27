@@ -14,12 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.SupplyJoke;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
-import com.google.sampleapp.backend.myApi.MyApi;
-import com.google.sampleapp.backend.myApi.model.MyBean;
+
 import com.rahulm09.android.jokedisplay.JokeDisplayActivity;
 
 import java.io.IOException;
@@ -31,8 +26,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
-        //new EndpointsAsyncTask().execute(this);
+        //new EndpointsAsyncTask().execute();
+     //   new EndpointsAsyncTask().execute(this);
+       // new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
     }
 
 
@@ -59,35 +55,43 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view){
-        Intent intent = new Intent(this, JokeDisplayActivity.class);
+       /* Intent intent = new Intent(this, JokeDisplayActivity.class);
         SupplyJoke joke = new SupplyJoke();
         String jokeString = joke.giveJoke();
         intent.putExtra(JokeDisplayActivity.JOKE_KEY, jokeString);
-        startActivity(intent);
-        Log.d("Main","joke manin: "+jokeString);
+        startActivity(intent);*/
+       // Log.d("Main","joke manin: "+jokeString);
        // TextView jokeView = (TextView)findViewById(R.id.joketextView);
        // jokeView.setText(jokeString);
         //Toast.makeText(this, "derp", Toast.LENGTH_SHORT).show();
+
+        new EndpointAsyncTask().execute(this);
     }
 
-    class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
-        private  MyApi myApiService = null;
+   /*class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
+ // class EndpointsAsyncTask extends AsyncTask<Pair<Context, String>, Void, String> {
+
+      private  MyApi myApiService = null;
         private Context context;
 
         @Override
-        protected String doInBackground(Pair<Context, String>... params) {
+        protected String doInBackground(Context... params) {
+       // protected String doInBackground(Pair<Context, String>... params) {
             if(myApiService == null) {  // Only do this once
                 MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
                         .setRootUrl("https://elegant-beach-125523.appspot.com/_ah/api/");
 
+
+
                 myApiService = builder.build();
             }
 
-            context = params[0].first;
-            String name = params[0].second;
+            context = params[0];
+            String name = "rahul";
 
             try {
-                return myApiService.sayHi(name).execute().getData();
+               // return myApiService.sayHi(name).execute().getData();
+                return myApiService.tellJoke().execute().getData();
             } catch (IOException e) {
                 return e.getMessage();
             }
@@ -95,8 +99,9 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         protected void onPostExecute(String result) {
+            Log.d("Final",result);
             Toast.makeText(context, result, Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
 }
