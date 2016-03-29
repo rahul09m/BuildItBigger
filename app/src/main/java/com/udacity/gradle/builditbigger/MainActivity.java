@@ -17,6 +17,8 @@ import com.example.SupplyJoke;
 
 import com.rahulm09.android.jokedisplay.JokeDisplayActivity;
 
+//import com.udacity.gradle.builditbigger.paid.MainActivityFragment;
+
 import java.io.IOException;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
@@ -37,7 +39,8 @@ public class MainActivity extends ActionBarActivity {
         }*/
 
       //  Log.d("the joke",theJoke);
-
+        //getSupportFragmentManager().beginTransaction().
+        //        add(R.id.fragment,new com.udacity.gradle.builditbigger.MainActivityFragment()).commit();
 
        // new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
     }
