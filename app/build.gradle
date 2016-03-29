@@ -32,17 +32,16 @@ android {
     }
 }
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    // Added for AdMob
-    //Add dependency to Java Joke Library
-    compile project(":javajokelibrary")
-    //Add dependency to Android JokeDisplay Library
-    compile project(":jokedisplay")
-    // compile 'com.android.support:design:23.1.1'
-    compile project(path: ':backend', configuration: 'android-endpoints')
-
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.google.android.gms:play-services:8.3.0'
-    compile 'com.android.support:design:23.1.1'
-}
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        // Added for AdMob
+        //Add dependency to Java Joke Library
+        compile project(":javajokelibrary")
+        //Add dependency to Android JokeDisplay Library
+        compile project(":jokedisplay")
+        // compile 'com.android.support:design:23.1.1'
+        compile project(path: ':backend', configuration: 'android-endpoints')
+        compile 'com.android.support:appcompat-v7:23.1.1'
+        freeCompile 'com.google.android.gms:play-services:8.4.0'
+        compile 'com.android.support:design:23.1.1'
+    }
