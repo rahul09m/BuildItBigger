@@ -30,20 +30,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //new EndpointsAsyncTask().execute();
-       /* try {
-             theJoke = new EndpointAsyncTask().execute(this).get();
-        }catch (CancellationException e){
-        }catch (ExecutionException e){
-        }catch (InterruptedException e){
-        }*/
-
-      //  Log.d("the joke",theJoke);
-        //getSupportFragmentManager().beginTransaction().
-        //        add(R.id.fragment,new com.udacity.gradle.builditbigger.MainActivityFragment()).commit();
-
-       // new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Manfred"));
-    }
+            }
 
 
     @Override
@@ -69,14 +56,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view) {
-      /* if (theJoke != null){
-       Intent intent = new Intent(this, JokeDisplayActivity.class);
-       intent.putExtra(JokeDisplayActivity.JOKE_KEY, theJoke);
-        startActivity(intent);
-    }*/
-       new EndpointAsyncTask().execute(this);
+           new EndpointAsyncTask().execute(this);
     }
-
-
-
 }
